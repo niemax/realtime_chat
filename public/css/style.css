@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
-	--dark-color-a: #667aff;
+	--dark-color-a: #000000;
 	--dark-color-b: #7386ff;
-	--light-color: #e6e9ff;
+	--light-color: #e0e0e0;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 	--dark-background-color: #232323;
@@ -52,10 +52,11 @@ a {
 	margin: 30px auto;
 	overflow: hidden;
 	border-radius: 10px;
+	box-shadow: 1px 0px 10px gray;
 }
 
 .chat-header {
-	background: #F3A724;
+	background: #75B435;
 	color: #fff;
 	padding: 15px;
 	display: flex;
@@ -69,7 +70,7 @@ a {
 }
 
 .chat-sidebar {
-	background: #F3A724;
+	background: #75B435;
 	color: #fff;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
@@ -107,18 +108,20 @@ a {
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
-	color: #F3A724;
+	color: #75B435;
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
 
 .chat-messages .message .meta span {
-	color: #777;
+	color: rgb(110, 110, 110);
 }
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: #F3A724;
+	background-color: #FFF;
+	border: 1px solid rgb(223, 223, 223);
+	border-radius: 10px;
 }
 
 .chat-form-container form {
@@ -151,14 +154,14 @@ a {
 .join-header {
 	text-align: center;
 	padding: 20px;
-	background: #F3A724;
+	background: #75B435;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
 .join-main {
 	padding: 30px 40px;
-	background: #F3A724;
+	background: #75B435;
 }
 
 .join-main p {
