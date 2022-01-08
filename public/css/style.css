@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
 	--dark-color-a: #667aff;
@@ -6,6 +6,7 @@
 	--light-color: #e6e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
+	--dark-background-color: #232323;
 }
 
 * {
@@ -15,10 +16,10 @@
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-size: 16px;
-	background: var(--light-color);
-	margin: 20px;
+	background: var(--light-color); 
+	margin: 0;
 }
 
 ul {
@@ -34,8 +35,13 @@ a {
 	padding: 5px 15px;
 	background: var(--light-color);
 	color: var(--dark-color-a);
-	border: 0;
 	font-size: 17px;
+	border-radius: 5px;
+	
+}
+
+.btn:hover {
+	background-color: var(--light-color);
 }
 
 /* Chat Page */
@@ -45,13 +51,12 @@ a {
 	background: #fff;
 	margin: 30px auto;
 	overflow: hidden;
+	border-radius: 10px;
 }
 
 .chat-header {
-	background: var(--dark-color-a);
+	background: #F3A724;
 	color: #fff;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
 	padding: 15px;
 	display: flex;
 	align-items: center;
@@ -64,7 +69,7 @@ a {
 }
 
 .chat-sidebar {
-	background: var(--dark-color-b);
+	background: #F3A724;
 	color: #fff;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
@@ -95,14 +100,14 @@ a {
 	padding: 10px;
 	margin-bottom: 15px;
 	background-color: var(--light-color);
-	border-radius: 5px;
+	border-radius: 10px;
 	overflow-wrap: break-word;
 }
 
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
-	color: var(--dark-color-b);
+	color: #F3A724;
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
@@ -113,7 +118,7 @@ a {
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+	background-color: #F3A724;
 }
 
 .chat-form-container form {
@@ -125,6 +130,15 @@ a {
 	padding: 5px;
 	height: 40px;
 	flex: 1;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+.chat-form-container button {
+	border: 1px solid gray;
+	background-color: white;
+	margin-left: 5px;
 }
 
 /* Join Page */
@@ -137,14 +151,14 @@ a {
 .join-header {
 	text-align: center;
 	padding: 20px;
-	background: var(--dark-color-a);
+	background: #F3A724;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
 .join-main {
 	padding: 30px 40px;
-	background: var(--dark-color-b);
+	background: #F3A724;
 }
 
 .join-main p {
@@ -165,6 +179,8 @@ a {
 	padding: 5px;
 	height: 40px;
 	width: 100%;
+	border-radius: 5px;
+	border: 1px solid gray;
 }
 
 .join-main select {
@@ -172,11 +188,13 @@ a {
 	padding: 5px;
 	height: 40px;
 	width: 100%;
+	border-radius: 5px;
 }
 
 .join-main .btn {
 	margin-top: 20px;
 	width: 100%;
+	border-radius: 5px;
 }
 
 @media (max-width: 700px) {

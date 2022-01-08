@@ -14,61 +14,68 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-// set static foler
+// Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-const modName = "SysAdm";
+const botName = "SysAdm";
 
 // Run when client connects
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
+
     socket.join(user.room);
 
-    socket.emit("message", formatMessage(modName, "Welcome to Chat!"));
+    // Welcome current user
+    socket.emit("message", formatMessage(botName, "Welcome to Chat!"));
 
+    // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
         formatMessage(
-          modName,
-          `${user.username} has joined the chat room ${room}.`
+          botName,
+          `<strong> ${user.username} </strong> has joined the chat`
         )
       );
-    io.to(user.name).emit("roomUsers", {
+
+    // Send users and room info
+    io.to(user.room).emit("roomUsers", {
       room: user.room,
       users: getRoomUsers(user.room),
     });
   });
 
-  // Broadcast when a user connects
+  // Listen for chatMessage
+  socket.on("chatMessage", (msg) => {
+    const user = getCurrentUser(socket.id);
 
+    io.to(user.room).emit("message", formatMessage(user.username, msg));
+  });
+
+  // Runs when client disconnects
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
 
     if (user) {
       io.to(user.room).emit(
         "message",
-        formatMessage(modName, `${user.username} has left the chat room.`)
+        formatMessage(
+          botName,
+          `<strong> ${user.username}</strong> has left the chat`
+        )
       );
 
-      io.to(user.name).emit("roomUsers", {
+      // Send users and room info
+      io.to(user.room).emit("roomUsers", {
         room: user.room,
         users: getRoomUsers(user.room),
       });
     }
   });
-
-  // listen to chat messages
-  socket.on("chatMessage", (message) => {
-    const user = getCurrentUser(socket.id);
-    io.emit("message", formatMessage(user.username, message));
-  });
 });
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, () =>
-  console.log(`Server successfully running on port: ${PORT}`)
-);
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
